@@ -1,27 +1,34 @@
 import Image from "next/image";
 import React from "react";
 import logo from "../resources/logo.png";
+import Search from '../resources/svg/search'
+import { ConnectButton } from "web3uikit";
 
 const styles = {
-  header: "bg-[#17171A] text-white h-20 flex gap-20 w-full p-4 relative",
-  headerWrapper: "flex justify-center h-full max-w-screen-xl mx-auto px-4",
+  header: "bg-[#17171A] text-white h-20 flex gap-20 min-w-max p-4 relative",
+  headerWrapper: "pl-28 flex justify-center h-full max-w-screen-xl mx-auto px-4",
   nav: 'flex justify-center items-center gap-4',
-  navItem: ''
+  navItem: 'relative mr-1 cursor-pointer hover:opacity-60',
+  badge: 'rounded-full bg-blue-400 h-1 w-1 absolute -right-1 top-0.5 ring-4',
+  inputContainer: 'flex items-center justify-center p-2 rounded bg-[#171924] mx-3',
+  input : 'bg-transparent outline-none text-white w-70 ml-3',
 };
 
 const Header = () => {
   return (
     <div className={styles.header}>
-      <div className="absolute w-[140px] h-[120px] top-0 left-0 object-cover object-right">
+      <div className="w-10 h-10 absolute top-0 -left-1">
         <Image
           src={logo}
-          layout="fill"
           objectFit="cover"
+          layout="fixed"
+          width={120}
+          height={80}
         />
       </div>
 
       <div className={styles.headerWrapper}>
-        <div className={styles.nav}>
+        <nav className={styles.nav}>
             <div className={styles.navItem}>
                 <div className={styles.navLink}>
                     Cryptocurrencies
@@ -79,6 +86,15 @@ const Header = () => {
             </div>
 
           
+        </nav>
+
+        <div className="flex items-center">
+           
+           <ConnectButton />
+            <div className={styles.inputContainer}>
+                <Search/>
+                <input type="text" className={styles.input} placeholder="Search" />
+            </div>
         </div>
       </div>
     </div>
