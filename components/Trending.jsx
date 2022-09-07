@@ -5,6 +5,7 @@ import usdt from '../resources/usdt.png'
 import gainers from '../resources/gainers.png'
 import recent from '../resources/recent.png'
 import ReactSwitch from 'react-switch'
+import Rate from './price-table/Rate'
 
 const Trending = () => {
     const [checked, setChecked] = useState(false);
@@ -22,10 +23,24 @@ const Trending = () => {
             </div>
             <br />
             <div className="flex">
-                <p className="text-gray-400">The global crypto market cap is $1.47T, a </p>
+                <p className="text-gray-400">The global crypto market cap is $1.47T, a &nbsp;</p>
                 <span>
-                    {/* Rate */}
+                    <Rate isIncrement={true}
+                    rate = '0.53%' />
                 </span>
+                <p>&nbsp; increase over the last day.</p>
+            </div>
+            <br />
+
+            <div className="flex items-center">
+                {/* 
+                <TrendingCard title = 'Trending' icon={fire} trendingData = {trendingData} /> 
+                
+                <TrendingCard title = 'Biggest Gainers' icon={gainers} trendingData = {trendingData} /> 
+
+                <TrendingCard title = 'Recently Added' icon={recent} trendingData = {trendingData} /> 
+                
+                */}
             </div>
         </div>
 

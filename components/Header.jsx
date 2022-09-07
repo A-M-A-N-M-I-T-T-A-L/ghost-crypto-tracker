@@ -6,8 +6,9 @@ import { ConnectButton } from "web3uikit";
 
 const styles = {
   header: "bg-[#17171A] text-white h-20 flex gap-20 min-w-max p-4 relative",
-  headerWrapper: "pl-28 flex justify-center h-full max-w-screen-xl mx-auto px-4",
+  headerWrapper: "ml-28 flex justify-center h-full max-w-screen-xl mx-auto px-4",
   nav: 'flex justify-center items-center gap-4',
+  navLink: 'text-white flex mx-[10px]',
   navItem: 'relative mr-1 cursor-pointer hover:opacity-60',
   badge: 'rounded-full bg-blue-400 h-1 w-1 absolute -right-1 top-0.5 ring-4',
   inputContainer: 'flex items-center justify-center p-2 rounded bg-[#171924] mx-3',
