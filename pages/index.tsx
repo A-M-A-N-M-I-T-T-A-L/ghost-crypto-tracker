@@ -8,7 +8,7 @@ const Home: NextPage = () => {
   return (
     <div className='min-h-screen'>
       <Header />
-      <div className="mt-10">
+      <div className="mt-10 mx-8">
         <Trending />
       </div>
       <div className='mt-20'>
