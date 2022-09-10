@@ -10,11 +10,14 @@ const TrendingCard = ({ title, icon, trendingData }) => {
         <div className="flex">
           {icon && <Image src={icon} width={25} height={25} alt="Icon" />}
           &nbsp;&nbsp;
+          <div className="font-extrabold">
+          {title}
+          </div>
         </div>
         <MoreButton />
       </div>
       <br />
-      
+
       {trendingData.map((item, index) => {
         return (
           <TrendingCardRow
