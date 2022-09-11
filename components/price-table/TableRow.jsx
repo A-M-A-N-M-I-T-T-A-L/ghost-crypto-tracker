@@ -35,16 +35,31 @@ const TableRow = ({
     "https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/4943.svg",
   ];
 
-const getRandomGraph = ()=>{
-    const rndInt = Math.floor(Math.random() * graphImages.length)
-}
+  const getRandomGraph = () => {
+    const rndInt = Math.floor((Math.random() * 120 ) % graphImages.length);
+    return graphImages[rndInt];
+  };
+
+  const router = useRouter();
+
+  const viewCoinDetails = () => {
+    router.push(
+      `/currencies/info?symbol=${coinSymbol}&coin=${coinName}&price=${price}`
+    );
+  };
+
+  const viewPrice = () => {
+    router.push(
+      `/currencies/price?symbol=${coinSymbol}&coin=${coinName}&price=${price}`
+    );
+  };
+
+  const formatNum = (num) => Number(num.toFixed(2)).toLocaleString();
 
   return (
     <div>
       <Image
-        src={
-          "https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/1.svg"
-        }
+        src={getRandomGraph()}
         width={50}
         height={50}
         layout="fixed"
