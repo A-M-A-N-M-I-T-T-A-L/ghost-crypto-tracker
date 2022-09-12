@@ -13,10 +13,12 @@ export const CoinMarketProvider = ({ children }) => {
         }
     }
 
+    const [coinData, setCoinData] = useState({})
+
     return (
         <CoinMarketContext.Provider
             value={{
-                getTopTenCoins
+                getTopTenCoins, coinData, setCoinData
             }}
         >
             {children}

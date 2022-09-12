@@ -44,7 +44,8 @@ const Table = () => {
                   showBuy={true}
                   dRate={coin.quote.USD.percent_change_7d}
                   hRate={coin.quote.USD.percent_change_24h}
-                  hRateIsIncrement={true}
+                  hRateIsIncrement={coin.quote.USD.percent_change_24h > 0 ? true : false}
+                  dRateIsIncrement={coin.quote.USD.percent_change_7d > 0 ? true : false}
                   price={coin.quote.USD.price}
                   marketCapValue={coin.quote.USD.market_cap}
                   volumeCryptoValue={coin.quote.USD.volume_24h}

@@ -1,8 +1,11 @@
 import Image from "next/image";
-import React from "react";
+import React,{useContext} from "react";
 import Star from "../../resources/svg/star";
 import More from "../../resources/svg/more";
 import { useRouter } from "next/router";
+import Rate from "./Rate";
+import CoinNameRow from "./CoinNameRow";
+import { CoinMarketContext } from "../../context/context";
 
 const styles = {
   tableRow: "text-white border-b-2 border-gray-800 text-[0.93rem]",
@@ -19,6 +22,7 @@ const TableRow = ({
   dRate,
   hRate,
   hRateIsIncrement,
+  dRateIsIncrement,
   price,
   marketCapValue,
   volumeCryptoValue,
@@ -36,16 +40,17 @@ const TableRow = ({
   ];
 
   const getRandomGraph = () => {
-    const rndInt = Math.floor((Math.random() * 120 ) % graphImages.length);
+    const rndInt = Math.floor((Math.random() * 120) % graphImages.length);
     return graphImages[rndInt];
   };
 
   const router = useRouter();
 
+  const { setCoinData } = useContext(CoinMarketContext);
+
   const viewCoinDetails = () => {
-    router.push(
-      `/currencies/info?symbol=${coinSymbol}&coin=${coinName}&price=${price}`
-    );
+    setCoinData({ coinName, coinSymbol, price });
+    router.push(`/currencies/info`);
   };
 
   const viewPrice = () => {
@@ -57,15 +62,75 @@ const TableRow = ({
   const formatNum = (num) => Number(num.toFixed(2)).toLocaleString();
 
   return (
-    <div>
-      <Image
-        src={getRandomGraph()}
-        width={50}
-        height={50}
-        layout="fixed"
-        className="filter grayscale-1 hue-rotate-90 "
-      />
-    </div>
+    <tbody className={styles.tableRow}>
+      <tr>
+        <td>
+          <Star />
+        </td>
+
+        <td>{starNum}</td>
+
+        {coinIcon ? (
+          <td className="cursor-pointer">
+            <CoinNameRow
+              name={coinName}
+              icon={coinIcon}
+              clicked={viewCoinDetails}
+            />
+          </td>
+        ) : (
+          <></>
+        )}
+
+        <td className="cursor-pointer" onClick={viewPrice}>
+          <p>${formatNum(price)}</p>
+        </td>
+
+        <td>
+          <Rate isIncrement={hRateIsIncrement} rate={`${formatNum(hRate)}%`} />
+        </td>
+
+        <td>
+          <Rate isIncrement={dRateIsIncrement} rate={`${formatNum(dRate)}%`} />
+        </td>
+
+        <td>
+          <div>
+            <p>${formatNum(marketCapValue)}</p>
+          </div>
+        </td>
+
+        <td>
+          <div>
+            <p>{formatNum(volumeValue)}</p>
+            <p className="text-gray-400">
+              {formatNum(volumeCryptoValue)} {coinSymbol}
+            </p>
+          </div>
+        </td>
+
+        <td>
+          <div>
+            <p>{formatNum(circulatingSupply)}</p>
+          </div>
+        </td>
+
+        <td>
+          <Image
+            src={getRandomGraph()}
+            width={150}
+            height={60}
+            alt="Graph"
+            layout="fixed"
+            className={dRate > 0 ? styles.graphGreen : styles.graphRed}
+          />
+        </td>
+
+        <td>
+          <More />
+        </td>
+      </tr>
+    </tbody>
   );
 };
 

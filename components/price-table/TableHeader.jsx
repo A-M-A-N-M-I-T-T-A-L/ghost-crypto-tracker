@@ -6,6 +6,7 @@ const TableHeader = () => {
   return (
     <tbody>
       <tr>
+        <th> </th>
         <th className="flex items-center">
           <b># &nbsp;</b>
           <ChevronDown />
