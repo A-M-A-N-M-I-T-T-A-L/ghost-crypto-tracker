@@ -40,7 +40,7 @@ const TableRow = ({
   ];
 
   const getRandomGraph = () => {
-    const rndInt = Math.floor((Math.random() * 120) % graphImages.length);
+    const rndInt = Math.floor((Math.random() * 100) % graphImages.length);
     return graphImages[rndInt];
   };
 

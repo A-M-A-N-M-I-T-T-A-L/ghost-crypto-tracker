@@ -4,7 +4,9 @@ import Header from "../../components/Header";
 import solana from "../../resources/solana.png";
 import usdc from "../../resources/usdc.png";
 import { CoinMarketContext } from "../../context/context";
-import PriceConverter from "../../components/PriceConverter";
+import PriceConverter from "../../components/coin-info/PriceConverter";
+import Graph from "../../components/coin-info/Graph";
+import Chat from '../../components/coin-info/Chat';
 
 const styles = {
   activeTab: "p-1 px-2 mr-2 rounded-lg bg-[#171924]",
@@ -17,6 +19,7 @@ const styles = {
   flexBetweenCenter: "flex items-center justify-between",
   tabContainerWrapper: "p-10 pl-0 pr-0 w-2/3",
   flexCenter: "flex items-center",
+  main: 'w-[95%] mx-auto'
 };
 
 const info = () => {
@@ -58,7 +61,7 @@ const info = () => {
             </div>
 
             <br />
-            {/* Graph */}
+            <Graph/>
             <br />
 
             <div className={styles.flexBetweenCenter}>
@@ -76,18 +79,10 @@ const info = () => {
             <br />
             <br />
 
-            <PriceConverter
-              from={coinData.coinName}
-              to={"USD"}
-              fromLogo={solana}
-              toLogo={usdc}
-              fromSymbol={coinData.coinSymbol}
-              toSymbol={"USD"}
-              price={coinData.price}
-            />
+            <PriceConverter />
           </div>
 
-          <div className="pt-10 ml-5">{/* <Chat /> */}</div>
+          <div className="pt-10 ml-5"><Chat /></div>
         </div>
       </main>
     </div>
