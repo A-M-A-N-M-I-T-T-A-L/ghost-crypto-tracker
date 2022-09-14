@@ -14,7 +14,14 @@ const Table = () => {
 
   const setData = useCallback(async () => {
     try {
-      let apiResponse = await getTopTenCoins();
+      let apiResponse;
+      if (localStorage.getItem("crypto"))
+        apiResponse = JSON.parse(localStorage.getItem("crypto"));
+      else {
+        apiResponse = await getTopTenCoins();
+        localStorage.setItem("crypto", JSON.stringify(apiResponse));
+        
+      }
       const filteredResponse = apiResponse.filter(
         (item) => item.cmc_rank <= 10
       );
@@ -30,7 +37,7 @@ const Table = () => {
     <div className="text-white font-bold">
       <div className="mx-auto max-w-screen-2xl">
         <table className="w-[95%] mx-auto">
-          <TableHeader/>
+          <TableHeader />
 
           {coinData && coinData ? (
             coinData.map((coin, index) => {
@@ -44,8 +51,12 @@ const Table = () => {
                   showBuy={true}
                   dRate={coin.quote.USD.percent_change_7d}
                   hRate={coin.quote.USD.percent_change_24h}
-                  hRateIsIncrement={coin.quote.USD.percent_change_24h > 0 ? true : false}
-                  dRateIsIncrement={coin.quote.USD.percent_change_7d > 0 ? true : false}
+                  hRateIsIncrement={
+                    coin.quote.USD.percent_change_24h > 0 ? true : false
+                  }
+                  dRateIsIncrement={
+                    coin.quote.USD.percent_change_7d > 0 ? true : false
+                  }
                   price={coin.quote.USD.price}
                   marketCapValue={coin.quote.USD.market_cap}
                   volumeCryptoValue={coin.quote.USD.volume_24h}

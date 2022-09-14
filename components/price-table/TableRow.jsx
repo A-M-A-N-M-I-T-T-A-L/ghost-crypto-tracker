@@ -48,14 +48,19 @@ const TableRow = ({
 
   const { setCoinData } = useContext(CoinMarketContext);
 
+  // router.push(
+  //   `/currencies/price?symbol=${coinSymbol}&coin=${coinName}&price=${price}`
+  // );
+
   const viewCoinDetails = () => {
     setCoinData({ coinName, coinSymbol, price });
     router.push(`/currencies/info`);
   };
 
   const viewPrice = () => {
+    setCoinData({ coinName, coinSymbol, price });
     router.push(
-      `/currencies/price?symbol=${coinSymbol}&coin=${coinName}&price=${price}`
+      `/currencies/price`
     );
   };
 
