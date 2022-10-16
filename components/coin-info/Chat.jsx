@@ -118,15 +118,18 @@ const Chat = () => {
       </div>
 
       <div className="flex">
-        <div className="flex items-center text-sm text-green-600 ">
-          <ChevronUp fill="#22bc64" />
-          <small className="ml-1">Bullish</small>
-        </div>
+        {bullishValue ? (
+          <div className="flex items-center text-sm text-green-600 ">
+            <ChevronUp fill="#22bc64" />
+            <small className="ml-1">Bullish</small>
+          </div>
+        ) : (
+          <div className="flex items-center text-sm text-red-600 ">
+            <ChevronDown fill="#a52b2b" />
+            <small className="ml-1">Bearish</small>
+          </div>
+        )}
         &nbsp;&nbsp;
-        <div className="flex items-center text-sm text-red-600 ">
-          <ChevronDown fill="#a52b2b" />
-          <small className="ml-1">Bearish</small>
-        </div>
       </div>
 
       <input
@@ -137,8 +140,11 @@ const Chat = () => {
         onChange={(e) => {
           setMessage(e.target.value);
         }}
+        onKeyDown={(e) => {
+          if (e.code === "Enter") sendMessage();
+        }}
       />
-      <div className={styles.postButtonContainer}>
+      <div className={`${styles.postButtonContainer} mt-2`}>
         <Button label="Post" onPress={sendMessage} />
       </div>
 
