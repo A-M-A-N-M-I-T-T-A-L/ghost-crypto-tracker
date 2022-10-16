@@ -13,8 +13,7 @@ import busd from "../../resources/busd.png";
 
 const styles = {
   coinNameRow: "flex items-center",
-  buyButton:
-    " bg-[#1a1f3a] text-[#6188ff] p-1 px-3 text-sm rounded-lg cursor-pointer hover:opacity-60",
+  buyButton: "bg-[#1a1f3a] text-[#6188ff] p-1 px-3 text-sm rounded-lg cursor-pointer hover:opacity-60",
 };
 
 const CoinNameRow = ({ name, icon, clicked }) => {
@@ -90,13 +89,13 @@ const CoinNameRow = ({ name, icon, clicked }) => {
         {name}
       </div>
 
-      <p>
+      {/* <p>
         {name === "Bitcoin" || name === "Ethereum" || name === "Tether" ? (
           <span className={styles.buyButton}>Buy</span>
         ) : (
           <></>
         )}
-      </p>
+      </p> */}
     </div>
   );
 };

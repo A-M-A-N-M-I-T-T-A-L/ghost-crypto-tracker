@@ -23,8 +23,9 @@ const Table = () => {
         
       }
       const filteredResponse = apiResponse.filter(
-        (item) => item.cmc_rank <= 10
+        (item) => item.cmc_rank <= 99
       );
+      console.log(apiResponse);
       setCoinData(filteredResponse);
     } catch (e) {
       console.log(e.message);
@@ -34,7 +35,7 @@ const Table = () => {
   console.log(coinData);
 
   return (
-    <div className="text-white font-bold">
+    <div className="text-white font-bold mx-1">
       <div className="mx-auto max-w-screen-2xl">
         <table className="w-[95%] mx-auto">
           <TableHeader />

@@ -87,7 +87,7 @@ const TableRow = ({
           <></>
         )}
 
-        <td className="cursor-pointer" onClick={viewPrice}>
+        <td className="" onClick={()=>{}}>
           <p>${formatNum(price)}</p>
         </td>
 

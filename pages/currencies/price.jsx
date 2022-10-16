@@ -9,7 +9,7 @@ const price = () => {
 console.log(coinData);
 
   return (
-    <div>
+    <div className=' text-white'>
         <Header/>
         <CoinDetails coinName={coinData.coinName} coinSymbol = {coinData.coinSymbol} price={coinData.price} />
     </div>

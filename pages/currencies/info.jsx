@@ -19,7 +19,7 @@ const styles = {
   flexBetweenCenter: "flex items-center justify-between",
   tabContainerWrapper: "p-10 pl-0 pr-0 w-2/3",
   flexCenter: "flex items-center",
-  main: 'w-[95%] mx-auto'
+  main: 'w-[95%] mx-auto text-white'
 };
 
 const info = () => {
